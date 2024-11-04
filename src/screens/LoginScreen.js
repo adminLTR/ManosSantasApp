@@ -1,48 +1,56 @@
 // src/screens/LoginScreen.js
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 export default function LoginScreen() {
-  return (
-    <View style={styles.container}>
-      {/* Logo */}
-      <Image source={require('../../assets/logo.png')} style={styles.logo} />
 
-      {/* Email Input */}
-      <TextInput placeholder="Correo electronico" style={styles.input} />
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-      {/* Password Input */}
-      <TextInput placeholder="Contraseña" style={styles.input} secureTextEntry />
+    return (
+        <View style={styles.container}>
+        {/* Logo */}
+        <Image source={require('../../assets/logo.png')} style={styles.logo} />
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Ingresar</Text>
-      </TouchableOpacity>
+        {/* Email Input */}
+        <TextInput placeholder="Correo electronico" style={styles.input} value={email} onChange={(e)=>{
+            setEmail(e.target.value)
+        }}/>
 
-      {/* OR Divider */}
-      <View style={styles.dividerContainer}>
-        <View style={styles.line} />
-        <Text style={styles.dividerText}>o</Text>
-        <View style={styles.line} />
-      </View>
+        {/* Password Input */}
+        <TextInput placeholder="Contraseña" style={styles.input} secureTextEntry value={password} onChange={(e) => {
+            setPassword(e.target.value)
+        }}/>
 
-      {/* Social Login Buttons */}
-      <TouchableOpacity style={styles.socialButton}>
-        <Text style={styles.socialButtonText}>Facebook</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.socialButton}>
-        <Text style={styles.socialButtonText}>Numero Telefono</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.socialButton}>
-        <Text style={styles.socialButtonText}>Gmail</Text>
-      </TouchableOpacity>
+        {/* Login Button */}
+        <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Ingresar</Text>
+        </TouchableOpacity>
 
-      {/* Register Button */}
-      <TouchableOpacity>
-        <Text style={styles.registerText}>Registro</Text>
-      </TouchableOpacity>
-    </View>
-  );
+        {/* OR Divider */}
+        <View style={styles.dividerContainer}>
+            <View style={styles.line} />
+            <Text style={styles.dividerText}>o</Text>
+            <View style={styles.line} />
+        </View>
+
+        {/* Social Login Buttons */}
+        <TouchableOpacity style={styles.socialButton}>
+            <Text style={styles.socialButtonText}>Facebook</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButton}>
+            <Text style={styles.socialButtonText}>Numero Telefono</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.socialButton}>
+            <Text style={styles.socialButtonText}>Gmail</Text>
+        </TouchableOpacity>
+
+        {/* Register Button */}
+        <TouchableOpacity>
+            <Text style={styles.registerText}>Registro</Text>
+        </TouchableOpacity>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
